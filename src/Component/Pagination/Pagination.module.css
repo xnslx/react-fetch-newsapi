@@ -1,0 +1,19 @@
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.List {
+    list-style: none;
+    text-decoration: none;
+    display: inline-block;
+    width: 48px;
+    height: 48px;
+    text-align: center;
+    line-height: center;
+}
+
+.List a {
+    text-decoration: none;
+}
