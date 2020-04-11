@@ -1,14 +1,15 @@
 import React, { useState, useEffect} from 'react';
 import axios from 'axios';
-import Pagination from './Component/Pagination/Pagination';
+// import Pagination from './Component/Pagination/Pagination';
 import News from './Component/News/News';
-import {BrowserRouter } from 'react-router-dom';
+import { Route } from 'react-router-dom';
+import NewsContent from './Component/NewsContent/NewsContent';
 
 function App() {
   const [ loading, setLoading] = useState(false);
   const [ news, setNews ] = useState([]);
-  const [numbersPerPage] = useState(5);
-  const [currentPage, setCurrentPage] = useState(1)
+  // const [numbersPerPage] = useState(5);
+  // const [currentPage, setCurrentPage] = useState(1)
 
   useEffect(() => {
     const fetchNews = async() => {
@@ -20,11 +21,11 @@ function App() {
     fetchNews();
   }, [])
 
-  const indexOfLast = currentPage * numbersPerPage;
-  const indexOfFirst = indexOfLast - numbersPerPage; 
-  const currentNews = news.slice(indexOfFirst, indexOfLast);
+  // const indexOfLast = currentPage * numbersPerPage;
+  // const indexOfFirst = indexOfLast - numbersPerPage; 
+  // const currentNews = news.slice(indexOfFirst, indexOfLast);
 
-  const paginate = (pageNumber) => setCurrentPage(pageNumber);
+  // const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   // console.log(news)
 
@@ -32,17 +33,14 @@ function App() {
     console.log(id)
   }
   return (
-    <BrowserRouter>
       <div>
-        <div>
           <h1 style={{textAlign: 'center'}}>
             Coronavirus News
           </h1>
           <News news={news} loading={loading} showNewsDetail={newsDetailHandler}/>
-        </div>
-        {/* <Pagination news={news} totalNews={news.length} numbersPerPage={numbersPerPage} paginate={paginate}/> */}
+          {/* <Route path="/" component={News}/> */}
       </div>
-    </BrowserRouter>
+      // <Pagination news={news} totalNews={news.length} numbersPerPage={numbersPerPage} paginate={paginate}/>
   );
 }
 

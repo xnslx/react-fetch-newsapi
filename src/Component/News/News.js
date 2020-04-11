@@ -1,29 +1,31 @@
 import React from 'react';
 import classes from './News.module.css';
-import { Route } from 'react-router-dom'; 
+import NewsContent from '../NewsContent/NewsContent';
+import { Route } from 'react-router-dom';
 
-const News = ({news, loading, showNewsDetail}) => {
-    if(loading) {
+const News = (props) => {
+    if(props.loading) {
         return (
             <div>loading...</div>
         )
     }
 
     return (
-        <div className={classes.Container}>
-            {news.map((article, index) => (
-                <div key={index} id={index} className={classes.Box}>
-                    <img 
-                        src={article.urlToImage} 
-                        alt="newsImage" 
-                        onClick={() => showNewsDetail(index)}
+        <div>
+            <div className={classes.Container} >
+                {props.news.map((article, index) => (
+                    <NewsContent 
+                        key={article.key}
+                        id={index}
+                        urlToImage={article.urlToImage}
+                        title={article.title}
+                        publishedAt={article.publishedAt}
+                        content={article.content}
+                        clicked={() => props.showNewsDetail(index)}
                     />
-                    <h2>{article.title}</h2>
-                    <h6>{article.publishedAt}</h6>
-                    <h4>{article.content}</h4>
-                </div>
-            ))}
-            {/* <Route path="/" exact component={NewsContent} /> */}
+                ))}
+            </div>
+            {/* <Route path="/:index" component={NewsContent}/> */}
         </div>
     ); 
 }
