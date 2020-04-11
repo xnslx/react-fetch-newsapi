@@ -2,7 +2,7 @@ import React, { useState, useEffect} from 'react';
 import axios from 'axios';
 import Pagination from './Component/Pagination/Pagination';
 import News from './Component/News/News';
-import NewsContent from './Component/NewsContent/NewsContent';
+import {BrowserRouter } from 'react-router-dom';
 
 function App() {
   const [ loading, setLoading] = useState(false);
@@ -26,21 +26,23 @@ function App() {
 
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
-  // console.log(news.length)
-  const newsDetailHandler = () => {
-    console.log('i am clicked')
+  // console.log(news)
+
+  const newsDetailHandler = (id) => {
+    console.log(id)
   }
   return (
-    <div>
+    <BrowserRouter>
       <div>
-        <h1 style={{textAlign: 'center'}}>
-          Coronavirus News
-        </h1>
-        <News news={currentNews} loading={loading} showNewsDetail={newsDetailHandler}/>
+        <div>
+          <h1 style={{textAlign: 'center'}}>
+            Coronavirus News
+          </h1>
+          <News news={news} loading={loading} showNewsDetail={newsDetailHandler}/>
+        </div>
+        {/* <Pagination news={news} totalNews={news.length} numbersPerPage={numbersPerPage} paginate={paginate}/> */}
       </div>
-      <Pagination news={news} totalNews={news.length} numbersPerPage={numbersPerPage} paginate={paginate}/>
-      {/* <NewsContent news={news}/> */}
-    </div>
+    </BrowserRouter>
   );
 }
 

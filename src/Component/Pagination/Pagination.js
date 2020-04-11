@@ -10,7 +10,7 @@ const Pagination = ({news, totalNews, numbersPerPage, paginate}) => {
     return (
         <ul style={{textAlign: 'center', padding: 0}}>
             {pageNumber.map(number => (
-                <li className={classes.List}>
+                <li className={classes.List} key={number}>
                     <a href="!#" onClick={() => paginate(number)}>{number}</a>
                 </li>
             ))}
