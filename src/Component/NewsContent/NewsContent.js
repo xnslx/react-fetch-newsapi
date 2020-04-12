@@ -1,6 +1,9 @@
 import React from 'react';
-import { withRouter } from 'react-router-dom';
+import { Route } from 'react-router-dom';
+import FullNews from '../FullNews/FullNews';
+
 const NewsContent = (props) => {
+    // console.log(props)
     return (
         <div>
             <div key={props.key} id={props.index}>
@@ -13,9 +16,10 @@ const NewsContent = (props) => {
                     <h6>{props.publishedAt}</h6>
                     <h4>{props.content}</h4>
             </div>
+            {/* <Route path={props.match.url + '/:index'} exact component={FullNews}/> */}
         </div>
     )
 }
 
 
-export default withRouter(NewsContent);
+export default NewsContent;

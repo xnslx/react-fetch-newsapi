@@ -38,7 +38,7 @@ function App() {
             Coronavirus News
           </h1>
           <News news={news} loading={loading} showNewsDetail={newsDetailHandler}/>
-          {/* <Route path="/" component={News}/> */}
+          {/* <Route path="/" exact component={App}/> */}
       </div>
       // <Pagination news={news} totalNews={news.length} numbersPerPage={numbersPerPage} paginate={paginate}/>
   );
